@@ -1,4 +1,26 @@
 body {
     background-color: gray;
 }
+#calculator-container {
+    display: grid;
+    
+}
+#operations-container > * {
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 
+}
+#numbers-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr)
+
+}
+#display {
+    background-color: white;
+}
+
+[value~=0]{
+    background-color: aqua;
+}

@@ -1,40 +1,116 @@
 const calculatorContainer = document.querySelector('#calculator-container')
+const displayContent = document.getElementById('#display')
 
 // Number buttons 
 let numbers = 10;
+const numbersContainer = document.getElementById('numbers-container');
+
 for (i = 0; i < numbers; i++) {
-    const numbersContainer = document.getElementById('numbers-container');
     const calcNumber = document.createElement('button');
-    calcNumber.setAttribute('id', `number${i}`);
+    calcNumber.setAttribute('id', `${i}`);
     calcNumber.textContent = `${i}`;
     calcNumber.addEventListener('click', selectorFunction);
     numbersContainer.appendChild(calcNumber);
 }
-let selectedNum = '';
+
+
+
+
+let number = '';
+let number2 = '';
+let displayNum = '0'
+let setOperator = '';
+display.textContent = displayNum;
+
 // Selected number
-function selectorFunction(selected) {
-    selected = this.textContent
-    selectedNum += selected
-    console.log(selectedNum)
+
+function selectorFunction() {
+    let selected = this.id
+    if (setOperator === ''){
+        number += selected
+        displayNum = number
+        console.log(number)
+    }
+    else {
+        number2 += selected
+        displayNum = number2
+        console.log(number2)
+    }
+    
+    display.textContent = displayNum
 }
+
 
 
 // operator function
 const operationsContainer = document.getElementById('operations-container');
 
-const addButton = document.getElementById('add-button')
+const addButton = document.querySelector('.add-button')
     addButton.addEventListener('click', operator)
-const subButton = document.getElementById('sub-button')
+const subButton = document.querySelector('.sub-button')
     subButton.addEventListener('click', operator)
-const multiButton = document.getElementById('multi-button')
+const multiButton = document.querySelector('.multi-button')
     multiButton.addEventListener('click', operator)
-const diviButton = document.getElementById('divi-button')
+const diviButton = document.querySelector('.divi-button')
     diviButton.addEventListener('click', operator)
-const equalsButton = document.getElementById('equals-button')
+const equalsButton = document.querySelector('.equals-button')
     equalsButton.addEventListener('click', operator)
 
-function operator(num1, num2) {
-    opSelected = this.textContent
-    result = num1 + opSelected + num2
-    console.log(opSelected)
+
+
+function operator() {
+    if (this.textContent !== "=") { // If the operator is not equals
+        setOperator = this.textContent;
+
+        
+        console.log(displayNum); // Print the first number
+        console.log(setOperator); // Print the operator
+    } 
+    else { // If equals button clicked
+        switch (setOperator) { // Calculate and print output
+            case '+':
+                display.textContent  = (parseInt(number) + parseInt(number2))
+                console.log(parseInt(number) + parseInt(number2));
+                number = display.textContent
+                number2 = ''
+                break;
+
+            case "-":
+                display.textContent = (parseInt(number) - parseInt(number2))
+                console.log(parseInt(number) - parseInt(number2));
+                number = display.textContent
+                number2 = ''
+                break;
+
+            case "*":
+                display.textContent  = (parseInt(number) * parseInt(number2))
+                console.log(parseInt(number) * parseInt(number2));
+                number = display.textContent
+                number2 = ''
+                break;
+            
+
+            case "/":
+                display.textContent  = (parseInt(number) / parseInt(number2))
+                console.log(parseInt(number) / parseInt(number2));
+                number = display.textContent
+                number2 = ''
+                break;
+
+            default:
+                break;
+        }
+    }
+}
+const clearCalculator = document.createElement('button')
+clearCalculator.textContent = 'CLEAR'
+clearCalculator.addEventListener('click', clearFunction)
+calculatorContainer.appendChild(clearCalculator)
+
+function clearFunction(){
+    number = '';
+    number2 = '';
+    displayNum = '0'
+    setOperator = '';
+    display.textContent = '0'
 }
