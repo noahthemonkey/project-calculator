@@ -19,28 +19,27 @@ for (i = 0; i < numbers; i++) {
 let number = '';
 let number2 = '';
 let displayNum = '0'
+let displayOp = '';
 let setOperator = '';
-let stored2;
+
 display.textContent = displayNum;
 
 // Selected number
 
 function selectorFunction() {
     let selected = parseInt(this.id)
-    if (setOperator === ''){
+    if (setOperator === '') {
         number += selected
         displayNum = number
         console.log(number)
         selected = ''
-    }
-
-    else {
+    } else {
         number2 += selected
         displayNum = number2
         console.log(number2)
-        selected =''
+        selected = ''
     }
-    
+
     display.textContent = displayNum
 }
 
@@ -50,109 +49,111 @@ function selectorFunction() {
 const operationsContainer = document.getElementById('operations-container');
 
 const addButton = document.querySelector('.add-button')
-    addButton.addEventListener('click', operator)
+addButton.addEventListener('click', operator)
 const subButton = document.querySelector('.sub-button')
-    subButton.addEventListener('click', operator)
+subButton.addEventListener('click', operator)
 const multiButton = document.querySelector('.multi-button')
-    multiButton.addEventListener('click', operator)
+multiButton.addEventListener('click', operator)
 const diviButton = document.querySelector('.divi-button')
-    diviButton.addEventListener('click', operator)
+diviButton.addEventListener('click', operator)
 const equalsButton = document.querySelector('.equals-button')
-    equalsButton.addEventListener('click', operator)
+equalsButton.addEventListener('click', operator)
 
 
 function operator() {
-    if (this.textContent !== "=") { // If the operator is not equals
-        setOperator = this.textContent;
-        console.log(displayNum); // Print the first number
-        console.log(setOperator); // Print the operator
-        if(number2 !== '') { // See if number2 has value
-            if(setOperator == '+'){
-                display.textContent  = (parseInt(number) + parseInt(number2))
-                console.log(parseInt(number) + parseInt(number2));
-                number = display.textContent
-                number2 = ''
-                selected = ''
-            }
-            if(setOperator == '-'){
-                display.textContent  = (parseInt(number) + parseInt(number2))
-                console.log(parseInt(number) + parseInt(number2));
-                number = display.textContent
-                number2 = ''
-                selected = ''
-            }
-            if(setOperator == '*'){
-                display.textContent  = (parseInt(number) + parseInt(number2))
-                console.log(parseInt(number) + parseInt(number2));
-                number = display.textContent
-                number2 = ''
-                selected = ''
-            }
-            if(setOperator == '/'){
-                display.textContent  = (parseInt(number) + parseInt(number2))
-                console.log(parseInt(number) + parseInt(number2));
-                number = display.textContent
-                number2 = ''
-                selected = ''
-            }
-    }
-}
-    else { // If equals button clicked
-        switch (setOperator) { // Calculate and print output
-            case '+':
-                display.textContent  = (parseInt(number) + parseInt(number2))
-                console.log(parseInt(number) + parseInt(number2));
-                number = display.textContent
-                selected = ''
-                break;
+    if (setOperator !== '') {
+        if (this.textContent !== "=") { // If the operator is not equals
+            console.log(displayNum); // Print the first number
+            console.log(setOperator); // Print the operator
+            if (number2 !== '') { // See if number2 has value
+                displayOp = setOperator;
 
-            case "-":
-                display.textContent = (parseInt(number) - parseInt(number2))
-                console.log(parseInt(number) - parseInt(number2));
-                number = display.textContent
+                if (displayOp == '+') {
+                    display.textContent = (parseInt(number) + parseInt(number2))
+                    console.log(parseInt(number) + parseInt(number2));
+                    number = display.textContent
+                    number2 = ''
+                    selected = ''
+                }
+                if (displayOp == '-') {
+                    display.textContent = (parseInt(number) - parseInt(number2))
+                    console.log(parseInt(number) - parseInt(number2));
+                    number = display.textContent
+                    number2 = ''
+                    selected = ''
+                }
+                if (displayOp == '*') {
+                    display.textContent = (parseInt(number) * parseInt(number2))
+                    console.log(parseInt(number) * parseInt(number2));
+                    number = display.textContent
+                    number2 = ''
+                    selected = ''
+                }
+                if (displayOp == '/') {
+                    display.textContent = (parseInt(number) / parseInt(number2))
+                    console.log(parseInt(number) / parseInt(number2));
+                    number = display.textContent
+                    number2 = ''
+                    selected = ''
+                }
+            }
+            setOperator = this.textContent;
+        } else { // If equals button clicked
+            switch (setOperator) { // Calculate and print output
+                case '+':
+                    display.textContent = (parseInt(number) + parseInt(number2))
+                    console.log(parseInt(number) + parseInt(number2));
+                    number = display.textContent
+                    selected = ''
+                    break;
 
-                selected = ''
-                break;
+                case "-":
+                    display.textContent = (parseInt(number) - parseInt(number2))
+                    console.log(parseInt(number) - parseInt(number2));
+                    number = display.textContent
 
-            case "*":
-                display.textContent  = (parseInt(number) * parseInt(number2))
-                console.log(parseInt(number) * parseInt(number2));
-                number = display.textContent
+                    selected = ''
+                    break;
 
-                selected = ''
-                break;
+                case "*":
+                    display.textContent = (parseInt(number) * parseInt(number2))
+                    console.log(parseInt(number) * parseInt(number2));
+                    number = display.textContent
+
+                    selected = ''
+                    break;
+
+
+                case "/":
+                    display.textContent = (parseInt(number) / parseInt(number2))
+                    console.log(parseInt(number) / parseInt(number2));
+                    number = display.textContent
+
+                    selected = ''
+                    break;
+
+                default:
+                    break;
+            }
             
-
-            case "/":
-                display.textContent  = (parseInt(number) / parseInt(number2))
-                console.log(parseInt(number) / parseInt(number2));
-                number = display.textContent
-
-                selected = ''
-                break;
-
-            default:
-                break;
         }
+    } else {
+        setOperator = this.textContent;
     }
+
 }
 const clearCalculator = document.createElement('button')
 clearCalculator.textContent = 'CLEAR'
 clearCalculator.addEventListener('click', clearFunction)
 calculatorContainer.appendChild(clearCalculator)
 
-function clearFunction(){
+function clearFunction() {
     number = '';
     number2 = '';
     displayNum = '0'
     setOperator = '';
     display.textContent = '0'
 }
-
-
-
-
-
 
 
 
@@ -178,7 +179,7 @@ function clearFunction(){
 //         number = display.textContent
 //         number2 = ''
 //         break;
-    
+
 
 //     case "/":
 //         display.textContent  = (parseInt(number) / parseInt(number2))
