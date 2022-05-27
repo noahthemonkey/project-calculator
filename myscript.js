@@ -89,7 +89,7 @@ function operator() {
                     setOperator = this.textContent;
                 }
                 if (displayOp == '*') {
-                    display.textContent = (parseFloat(number) * parseFloat(number2))
+                    display.textContent = (parseFloat(number) * parseFloat(number2)).toFixed(5)
                     console.log(parseFloat(number) * parseFloat(number2));
                     number = display.textContent
                     number2 = ''
@@ -97,7 +97,7 @@ function operator() {
                     setOperator = this.textContent;
                 }
                 if (displayOp == '/') {
-                    display.textContent = (parseFloat(number) / parseFloat(number2))
+                    display.textContent = (parseFloat(number) / parseFloat(number2)).toFixed(5)
                     console.log(parseFloat(number) / parseFloat(number2));
                     number = display.textContent
                     number2 = ''
@@ -129,7 +129,7 @@ function operator() {
                     break;
 
                 case "*":
-                    display.textContent = (parseFloat(number) * parseFloat(number2))
+                    display.textContent = (parseFloat(number) * parseFloat(number2)).toFixed(5)
                     console.log(parseFloat(number) * parseFloat(number2));
                     number = display.textContent
                     
@@ -140,7 +140,7 @@ function operator() {
 
 
                 case "/":
-                    display.textContent = (parseFloat(number) / parseFloat(number2))
+                    display.textContent = (parseFloat(number) / parseFloat(number2)).toFixed(5)
 
                     console.log(parseFloat(number) / parseFloat(number2));
                     number = display.textContent
@@ -179,6 +179,7 @@ function operator() {
 }
 const clearCalculator = document.createElement('button')
 clearCalculator.textContent = 'CLEAR'
+clearCalculator.setAttribute('id', 'clear')
 clearCalculator.addEventListener('click', clearFunction)
 calculatorContainer.appendChild(clearCalculator)
 
