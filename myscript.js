@@ -18,8 +18,6 @@ for (i = 0; i < numbers; i++) {
 }
 
 
-
-
 let number = '';
 let number2 = '';
 let displayNum = '0'
@@ -34,15 +32,18 @@ display.textContent = displayNum;
 function selectorFunction() {
     let selected = parseFloat(this.id)
     if (setOperator === '') {
+
         number += selected
         console.log(number)
         selected = ''
-       
+
     } else {
         number2 += selected
         console.log(number2)
         selected = ''
+        
     }
+
     display.textContent = `${number} ${setOperator} ${number2}`
 
 }
@@ -73,7 +74,7 @@ function operator() {
                 displayOp = setOperator;
 
                 if (displayOp == '+') {
-                    display.textContent = (parseFloat(number) + parseFloat(number2))
+                    display.textContent = parseFloat((parseFloat(number) + parseFloat(number2)).toFixed(5))
                     console.log(parseFloat(number) + parseFloat(number2));
                     number = display.textContent
                     number2 = ''
@@ -81,7 +82,7 @@ function operator() {
                     setOperator = this.textContent;
                 }
                 if (displayOp == '-') {
-                    display.textContent = (parseFloat(number) - parseFloat(number2))
+                    display.textContent = parseFloat((parseFloat(number) - parseFloat(number2)).toFixed(5))
                     console.log(parseFloat(number) - parseFloat(number2));
                     number = display.textContent
                     number2 = ''
@@ -89,7 +90,7 @@ function operator() {
                     setOperator = this.textContent;
                 }
                 if (displayOp == '*') {
-                    display.textContent = (parseFloat(number) * parseFloat(number2)).toFixed(5)
+                    display.textContent = parseFloat((parseFloat(number) * parseFloat(number2)).toFixed(5))
                     console.log(parseFloat(number) * parseFloat(number2));
                     number = display.textContent
                     number2 = ''
@@ -97,7 +98,7 @@ function operator() {
                     setOperator = this.textContent;
                 }
                 if (displayOp == '/') {
-                    display.textContent = (parseFloat(number) / parseFloat(number2)).toFixed(5)
+                    display.textContent = parseFloat((parseFloat(number) / parseFloat(number2)).toFixed(5))
                     console.log(parseFloat(number) / parseFloat(number2));
                     number = display.textContent
                     number2 = ''
@@ -110,7 +111,7 @@ function operator() {
             
             switch (setOperator) { // Calculate and print output
                 case '+':
-                    display.textContent = (parseFloat(number) + parseFloat(number2))
+                    display.textContent = parseFloat((parseFloat(number) + parseFloat(number2)).toFixed(5))
                     console.log(parseFloat(number) + parseFloat(number2));
                     number = display.textContent
                     selected = ''
@@ -119,7 +120,7 @@ function operator() {
                     break;
 
                 case "-":
-                    display.textContent = (parseFloat(number) - parseFloat(number2))
+                    display.textContent = parseFloat((parseFloat(number) - parseFloat(number2)).toFixed(5))
                     console.log(parseFloat(number) - parseFloat(number2));
                     number = display.textContent
 
@@ -129,7 +130,7 @@ function operator() {
                     break;
 
                 case "*":
-                    display.textContent = (parseFloat(number) * parseFloat(number2)).toFixed(5)
+                    display.textContent = parseFloat((parseFloat(number) * parseFloat(number2)).toFixed(5))
                     console.log(parseFloat(number) * parseFloat(number2));
                     number = display.textContent
                     
@@ -140,7 +141,7 @@ function operator() {
 
 
                 case "/":
-                    display.textContent = (parseFloat(number) / parseFloat(number2)).toFixed(5)
+                    display.textContent = parseFloat((parseFloat(number) / parseFloat(number2)).toFixed(5))
 
                     console.log(parseFloat(number) / parseFloat(number2));
                     number = display.textContent
